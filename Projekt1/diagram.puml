@@ -1,0 +1,40 @@
+@startuml
+rectangle "Główna" {
+
+rectangle "quiz"{
+    (Rozpocznij quiz) --> [Rozwiąż pytanie n]
+    [Rozwiąż pytanie n] --> (Sprawdź odpowiedź n)
+    (Sprawdź odpowiedź n) --> [Poprawna odpowiedź?]
+    [Poprawna odpowiedź?] --> [Tak]
+    [Tak] --> (Przejdź do pytania n + 1)
+    [Poprawna odpowiedź?] --> [Nie]
+    [Nie] --> (Odpowiedź do pytania n)
+
+
+}
+rectangle "wiadomość"{
+
+    (czy formularz wypełniony?) --> [tak]
+    (czy formularz wypełniony?) --> [nie]
+    [tak] --> (wyslij wiadomość)
+    [nie] --> (wypelnij formularz)
+
+}
+
+}
+
+rectangle "Mapa" {
+
+}
+
+rectangle "Kontakt" {
+
+}
+
+Mapa -> Kontakt
+Mapa -> Główna
+Główna -> Kontakt
+Główna -> Mapa
+Kontakt -> Główna
+Kontakt -> Mapa
+@enduml
